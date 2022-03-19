@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'M3'
     }
+    options {
+        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
+    }
     stages {
         stage('Git clone'){
             steps{
