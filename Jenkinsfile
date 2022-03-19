@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script{
                 def mavenPom = readMavenPom file: 'pom.xml'
+                def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "calc_app_snapshot" : "calc_app_release"
                 echo 'Upload the war to nexus'
                 nexusArtifactUploader artifacts: [
                     [   artifactId: 'calc-app',
@@ -32,7 +33,7 @@ pipeline {
                     nexusUrl: '3.109.186.152:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: 'calc_app_release', 
+                    repository: nexusRepoName, 
                     version: "${mavenPom.version}"
                 }
             }
