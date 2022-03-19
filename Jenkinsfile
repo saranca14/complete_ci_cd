@@ -17,11 +17,12 @@ pipeline {
         }
         stage('Upload war') {
             steps {
+                def mavenPom = readMavenPom 'pom.xml'
                 echo 'Upload the war to nexus'
                 nexusArtifactUploader artifacts: [
                     [   artifactId: 'calc-app',
                         classifier: '', 
-                        file: 'target/calc-app-1.0.0.war', 
+                        file: "target/calc-app-${mavenPom.version}.war", 
                         type: 'war'
                     ]
                 ], 
@@ -31,7 +32,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'calc_app_release', 
-                    version: '1.0.0'
+                    version: "${mavenPom.version}"
             }
         }
     }
