@@ -17,7 +17,8 @@ pipeline {
         }
         stage('Upload war') {
             steps {
-                def mavenPom = readMavenPom 'pom.xml'
+                script{
+                    def mavenPom = readMavenPom 'pom.xml'
                 echo 'Upload the war to nexus'
                 nexusArtifactUploader artifacts: [
                     [   artifactId: 'calc-app',
@@ -33,6 +34,7 @@ pipeline {
                     protocol: 'http', 
                     repository: 'calc_app_release', 
                     version: "${mavenPom.version}"
+                }
             }
         }
     }
