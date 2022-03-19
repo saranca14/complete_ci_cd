@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Upload war') {
             steps {
-                echo 'Upload the war'
+                echo 'Upload the war to nexus'
                 nexusArtifactUploader artifacts: [
                     [   artifactId: 'calc-app',
                         classifier: '', 
@@ -27,7 +27,7 @@ pipeline {
                 ], 
                     credentialsId: 'nexus_id', 
                     groupId: 'in.javahome', 
-                    nexusUrl: '10.0.1.160', 
+                    nexusUrl: '3.109.186.152', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'calc_app_release', 
