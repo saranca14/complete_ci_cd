@@ -5,7 +5,7 @@
 	<artifactId>calc-app</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>simple-app</name>
+	<name>calc-app</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
