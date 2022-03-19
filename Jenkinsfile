@@ -18,7 +18,7 @@ pipeline {
         stage('Upload war') {
             steps {
                 script{
-                    def mavenPom = readMavenPom 'pom.xml'
+                def mavenPom = readMavenPom file: 'pom.xml'
                 echo 'Upload the war to nexus'
                 nexusArtifactUploader artifacts: [
                     [   artifactId: 'calc-app',
