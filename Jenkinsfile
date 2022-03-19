@@ -27,7 +27,7 @@ pipeline {
                 ], 
                     credentialsId: 'nexus_id', 
                     groupId: 'in.javahome', 
-                    nexusUrl: '3.109.186.152', 
+                    nexusUrl: '3.109.186.152:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'calc_app_release', 
